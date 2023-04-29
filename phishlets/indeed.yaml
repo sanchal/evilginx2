@@ -22,5 +22,5 @@ credentials:
     search: '(.*)'
     type: 'post'
 login:
-  domain: 'secure.indeed.com'
-  path: '/'
+  domain: 'indeed.com'
+  path: '/auth'
